@@ -15,7 +15,7 @@
     </ItemGroup>
     <ItemGroup />
     <ItemGroup>
-        <PackageReference Include="Fable.DateFunctions" Version="3.1.0" />
+        <PackageReference Include="Fable.DateFunctions" Version="3.2.0" />
         <PackageReference Include="Fable.Remoting.Client" Version="7.1.0" />
         <PackageReference Include="Feliz" Version="1.16.2" />
         <PackageReference Include="Feliz.PigeonMaps" Version="2.3.0" />
