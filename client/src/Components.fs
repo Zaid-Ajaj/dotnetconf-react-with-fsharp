@@ -52,7 +52,7 @@ let counterFromServer() =
     | Deferred.HasNotStartedYet -> Html.none
     | Deferred.InProgress -> Html.h1 "Loading"
     | Deferred.Failed error -> Html.span error.Message
-    | Deferred.Resolved counter -> Html.h1 counter.value
+    | Deferred.Resolved counter -> Html.h3 counter.value
 
 
 // Simple routing solution using Feliz.Router
@@ -66,6 +66,9 @@ let routing() =
             match currentUrl with
             | [ ] -> Html.h1 "Index"
             | [ "home" ] -> Html.h1 "Home page"
+            | [ "counter" ] -> counter()
+            | [ "server" ] -> counterFromServer()
+            | [ "counter"; Route.Int count ] -> counterWithInitialState count
             | _ -> Html.h1 "Not found"
         ]
     ]

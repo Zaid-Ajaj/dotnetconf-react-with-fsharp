@@ -179,6 +179,14 @@ let navigationBar (props: NavigationBarProps) =
                         titleVisible = hovered || props.isOpen
                     }
 
+                    navigationLink {
+                        title = "Sites"
+                        icon = Icons.FaMapMarkerAlt
+                        url = Router.format "maps"
+                        active = props.currentUrl = [ "maps" ]
+                        titleVisible = hovered || props.isOpen
+                    }
+
                     navigationBarOpener {
                         isOpen = props.isOpen
                         toggleOpened = fun _ -> props.onOpen(not props.isOpen)

@@ -11,7 +11,9 @@ var webpack = require("webpack");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 var CONFIG = {
     // The tags to include the generated JS and CSS will be automatically injected in the HTML template
@@ -34,6 +36,7 @@ var CONFIG = {
     // Use babel-preset-env to generate JS compatible with most-used browsers.
     // More info at https://babeljs.io/docs/en/next/babel-preset-env.html
     babel: {
+        plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),
         presets: [
             ["@babel/preset-react"],
             ["@babel/preset-env", {
@@ -115,6 +118,7 @@ module.exports = {
         ])
         : commonPlugins.concat([
             new webpack.HotModuleReplacementPlugin(),
+            new ReactRefreshWebpackPlugin()
         ]),
     resolve: {
         // See https://github.com/fable-compiler/Fable/issues/1490
